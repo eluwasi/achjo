@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>ACH-JO SS/19 </title>
+	<meta name="author" content="Alvaro Trigo Lopez" />
+	<meta name="description" content="fullPage full-screen backgrounds." />
+	<meta name="keywords"  content="fullpage,jquery,demo,screen,fullscreen,backgrounds,full-screen" />
+	<meta name="Resource-type" content="Document" />
+
+
+	<link rel="stylesheet" type="text/css" href="../jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="examples.css" />
+	<style>
+
+	/* Style for our header texts
+	* --------------------------------------- */
+	h1{
+		font-size: 5em;
+		font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+		color: #fff;
+		margin:0;
+		padding:0;
+	}
+h3 {
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 15.4px;
+}
+p {
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+}
+blockquote {
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+	font-size: 21px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 30px;
+}
+pre {
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 18.5714px;
+}
+
+	/* Centered texts in each section
+	* --------------------------------------- */
+	.section{
+		text-align:center;
+		overflow: hidden;
+	}
+	p {
+		padding-left: 50px;
+		padding-right: 50px;
+	}
+	body {
+		background-image: url('bg.jpg');
+		background-color: #fff;
+		color: black;
+	}
+
+	#myVideo{
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		top:0;
+		right:0;
+		width: 100%;
+		height: 100%;
+		background-size: 100% 100%;
+ 		background-color: black; /* in case the video doesn't fit the whole page*/
+  		background-image: /* our video */;
+  		background-position: center center;
+  		background-size: contain;
+   		object-fit: cover; /*cover video background */
+   		z-index:3;
+	}
+
+
+
+	/* Layer with position absolute in order to have it over the video
+	* --------------------------------------- */
+	#section0 .layer{
+		position: absolute;
+		z-index: 4;
+		width: 100%;
+		left: 0;
+		top: 43%;
+
+		/* 
+		* Preventing flicker on some browsers 
+		* See http://stackoverflow.com/a/36671466/1081396  or issue #183
+		*/
+		-webkit-transform: translate3d(0,0,0);
+		-ms-transform: translate3d(0,0,0);
+		transform: translate3d(0,0,0);
+	}
+
+	/*solves problem with overflowing video in Mac with Chrome */
+	#section0{
+		overflow: hidden;
+	}
+
+
+	/* Bottom menu
+	* --------------------------------------- */
+	#infoMenu li a {
+		color: #fff;
+	}
+
+
+	/* Hiding video controls 
+	* See: https://css-tricks.com/custom-controls-in-html5-video-full-screen/
+	* --------------------------------------- */
+	video::-webkit-media-controls {
+	  display:none !important;
+	}
+
+	</style>
+
+	<!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+	<![endif]-->
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
+	<script type="text/javascript" src="../vendors/scrolloverflow.js"></script>
+
+	<script type="text/javascript" src="../jquery.fullPage.js"></script>
+	<script type="text/javascript" src="examples.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				verticalCentered: true,
+				sectionsColor: ['#1bbc9b', '#ffff', '#fff']
+			});
+		});
+	</script>
+
+</head>
+<body>
+
+<div id="fullpage">
+	<div class="section " id="section0">
+		<video id="myVideo" loop muted data-autoplay>
+			<source src="imgs/achjo.mp4" type="video/mp4">
+			<source src="imgs/flowers.webm" type="video/webm">
+		</video>
+		<div class="layer">
+			<h1>ach-jo</h1>
+		</div>
+	</div>
+	<div class="section" id="section1"><h1>About the collection</h1>
+		<img src="imgs/logo.png" alt="iphone" id="iphone-two" />
+	 <p>
+The “oh boy“ collection is a story of siblings, preparing for their 
+game. Game for the few, where you are in charge of your own armour. 
+Steal- ing dad’s tailored jackets, hockey armour and pyjamas, found 
+in his closet and combining it with figure skating dresses and tights
+ of their own, prepared for your next training. Towels could do, you 
+ have plen- ty around the house. The denim insulation you saw laying 
+ around the shed could also be useful, it might get cold.</p></div>
+	<div class="section" id="section2">
+	    <div class="slide" id="slide1"><p>Ach jo offers a unique inside of a world, created by children’s wild 
+gination, where a strange game is about to begin.
+Playing with perspective, volume and materials, this collection is 
+aim- ing to capture the extravagant and provocative imagination,
+where playfulness compliments classic tailoring, prints playing 
+along with menswear patters and silhouettes constantly changing 
+the game from fluid to constructed shapes. It is a world created 
+by children, prepar- ing for their imaginary game where no rules 
+apply. Capturing the beautiful chaos in childs head is the prior
+ essence of this collection.</p></div>
+	    <div class="slide" id="slide2">
+			<h1>Film Stills</h1>
+			<img src="imgs/blu1.png" alt="iphone" id="iphone-two" />
+		</div>
+		<div class="slide" id="slide3">
+				
+				<img src="imgs/blu11.png" alt="iphone" id="iphone-two" />
+			</div>
+			 <div class="slide" id="slide4">
+			
+			<img src="imgs/blu22.png" alt="iphone" id="iphone-two" />
+		</div>
+		<div class="slide" id="slide5">
+				
+				<img src="imgs/blu33.png" alt="iphone" id="iphone-two" />
+			</div>
+		<div class="slide" id="slide5">
+			
+				<img src="imgs/blu44.png" alt="iphone" id="iphone-two" />
+			</div>
+		<div class="slide" id="slide6">
+				
+				<img src="imgs/blu55.png" alt="iphone" id="iphone-two" />
+			</div>
+		<div class="slide" id="slide6">
+				
+				<img src="imgs/blu66.png" alt="iphone" id="iphone-two" />
+			</div>
+		<div class="slide" id="slide7">
+				<h1></h1>
+				<img src="imgs/blu77.png" alt="iphone" id="iphone-two" />
+			</div>
+	</div>
+	<div class="section" id="section3"><img width="400px" src="imgs/LOOK1.png" alt="iphone" id="iphone-two" /></div>
+	<div class="section" id="section3"><img width="400px" src="imgs/LOOK2.png" alt="iphone" id="iphone-two" /></div>
+	<div class="section" id="section3"><img width="400px" src="imgs/LOOK3.png" alt="iphone" id="iphone-two" /></div>
+	<div class="section" id="section3"><img width="400px" src="imgs/LOOK4.png" alt="iphone" id="iphone-two" /></div>
+	<div class="section" id="section3"><img width="400px" src="imgs/look5.png" alt="iphone" id="iphone-two" /></div>
+	<div class="section" id="section3"><img width="400px" src="imgs/look6.png" alt="iphone" id="iphone-two" /></div>
+
+	
+</div>
+
+</body>
+</html>

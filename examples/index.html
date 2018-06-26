@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>ACH-JO SS/19 </title>
+	<meta name="author" content="Alvaro Trigo Lopez" />
+	<meta name="description" content="fullPage full-screen backgrounds." />
+	<meta name="keywords"  content="fullpage,jquery,demo,screen,fullscreen,backgrounds,full-screen" />
+	<meta name="Resource-type" content="Document" />
+
+
+	<link rel="stylesheet" type="text/css" href="../jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="examples.css" />
+	<style>
+
+	/* Style for our header texts
+	* --------------------------------------- */
+	h1{
+		font-size: 5em;
+		font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+		color: #fff;
+		margin:0;
+		padding:0;
+	}
+h3 {
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 15.4px;
+}
+        .videoContainer {
+  position: absolute;
+  width: 100%;
+  height: 97%;
+  top: auto;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: red; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 18px; /* Increase font size */
+}
+
+#myBtn:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
+}
+
+p {
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+}
+blockquote {
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+	font-size: 21px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 30px;
+}
+        
+
+pre {
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 18.5714px;
+}
+        /* Style the navbar */
+#navbar {
+  overflow: hidden;
+  background-color: black;
+}
+      
+/* Navbar links */
+#navbar a {
+  float: left;
+  display: block;
+  color: blue;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+    z-index: 100;
+}
+
+/* Page content */
+.content {
+  padding: 16px;
+}
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
+}
+
+	/* Centered texts in each section
+	* --------------------------------------- */
+	.section{
+		text-align:center;
+		overflow: hidden;
+		
+	}
+	p {
+		padding-left: 50px;
+		padding-right: 50px;
+	}
+	body {
+		 background:url("imgs/background.png");
+       background-size: cover;
+		background-color: #fff;
+		color: black;
+        cursor: url(imgs/Trophy_mouse_v2.png), auto;
+
+	}
+
+	#myVideo{
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		top:0;
+		right:0;
+		width: 100%;
+		height: 100%;
+		background-size: 100% 100%;
+ 		background-color: black; /* in case the video doesn't fit the whole page*/
+  		background-image: /* our video */;
+  		background-position: center center;
+  		background-size: contain;
+   		object-fit: cover; /*cover video background */
+   		z-index:3;
+	}
+	#section23{
+		background-color: #fff;
+
+	}
+	
+#sect{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    font-size: 2vmin;
+    letter-spacing: 1px;
+
+}
+#down{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 10px;
+}
+
+	/* Layer with position absolute in order to have it over the video
+	* --------------------------------------- */
+	#section0 .layer{
+		position: absolute;
+		z-index: 4;
+		width: 100%;
+		left: 0;
+		top: 43%;
+
+		/* 
+		* Preventing flicker on some browsers 
+		* See http://stackoverflow.com/a/36671466/1081396  or issue #183
+		*/
+		-webkit-transform: translate3d(0,0,0);
+		-ms-transform: translate3d(0,0,0);
+		transform: translate3d(0,0,0);
+	}
+
+	/*solves problem with overflowing video in Mac with Chrome */
+	#section0{
+		overflow: hidden;
+	}
+
+
+	/* Bottom menu
+	* --------------------------------------- */
+	#infoMenu li a {
+		color: #fff;
+	}
+
+
+	/* Hiding video controls 
+	* See: https://css-tricks.com/custom-controls-in-html5-video-full-screen/
+	* --------------------------------------- */
+	video::-webkit-media-controls {
+	  display:none !important;
+	}
+
+	</style>
+
+	<!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+	<![endif]-->
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
+	<script type="text/javascript" src="../vendors/scrolloverflow.js"></script>
+
+	<script type="text/javascript" src="../jquery.fullPage.js"></script>
+	<script type="text/javascript" src="examples.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				verticalCentered: true,
+				sectionsColor: ['#1bbc9b', '#ffff', '#fff']
+			});
+		});
+	</script>
+	<script>
+		// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+	</script>
+    <script>
+    // When the user scrolls the page, execute myFunction 
+window.onscroll = function() {myFunction()};
+
+// Get the navbar
+var navbar = document.getElementById("navbar");
+
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}</script>
+
+</head>
+<body>
+    
+
+<div id="fullpage">
+	<div class="section " id="section0">
+		<video id="myVideo" playsinline autoplay loop muted data-autoplay>
+			<source src="imgs/m.mp4" type="video/mp4">
+			<source src="imgs/m.webm" type="video/webm">
+		</video>
+		<div class="layer">
+			<img width="200px" src="imgs/logowhite.png" alt="iphone" id="iphone-two" />
+		</div>
+	</div>
+	<div class="section" id="section11">
+		<img width="200px" src="imgs/Achjo_grey_logo_ohboy_blue.png" alt="iphone" id="iphone-two" />
+	 <p id="sect">
+The “oh boy“ collection is a story of siblings, preparing for their 
+game. Game for the few, where you are in charge of your own armour.
+Steal- ing dad’s tailored jackets, hockey armour and pyjamas, found 
+in his closet and combining it with figure skating dresses and tights 
+ of their own, prepared for your next training. Towels could do, you 
+ have plen- ty around the house. The denim insulation you saw laying 
+ around the shed could also be useful, it might get cold.</p> 
+    <img width="200px"src="imgs/smile.jpg" alt="iphone" id="bimages" /> <span>
+        </span>
+        <br>
+        <br>
+        <br>
+        <img width="50px" src="imgs/down.png" alt="iphone" id="down" />
+	 <p id="sect">
+	
+        
+    </div>
+    
+	<div class="section" id="section2">
+	    <div class="slide" id="slide1">
+           
+                
+            <p id="sect">Ach jo offers a unique inside of a world, created by children’s wild 
+gination, where a strange game is about to begin.
+Playing with perspective, volume and materials, this collection is 
+aim- ing to capture the extravagant and provocative imagination,
+where playfulness compliments classic tailoring, prints playing 
+along with menswear patters and silhouettes constantly changing 
+the game from fluid to constructed shapes. It is a world created 
+by children, prepar- ing for their imaginary game where no rules 
+apply. Capturing the beautiful chaos in childs head is the prior
+ essence of this collection.</p>
+            
+           
+            
+             <br>
+        <br>
+        <br>
+        <img width="50px" src="imgs/down.png" alt="iphone" id="down" />
+             
+        </div>
+	    <div class="slide" id="slide2">
+            <p>Film Stills</p><br>
+			<img height="75%" src="imgs/blu1.png" alt="iphone" id="iphone-two" />
+		</div>
+		
+			 <div class="slide" id="slide4"><p>Film Stills</p><br>
+			
+			<img height="75%" src="imgs/blu22.png" alt="iphone" id="iphone-two" />
+		</div>
+		<div height="75%"  class="slide" id="slide5"><p>Film Stills</p><br>
+				
+				<img src="imgs/blu33.png" alt="iphone" id="iphone-two" />
+			</div>
+		<div height="75%"  class="slide" id="slide5"><p>Film Stills</p><br>
+			
+				<img height="75%" src="imgs/blu44.png" alt="iphone" id="iphone-two" />
+			</div>
+		<div class="slide" id="slide6"><p>Film Stills</p><br>
+				
+				<img height="75%" src="imgs/blu55.png" alt="iphone" id="iphone-two" />
+			</div>
+		<div class="slide" id="slide6"><p>Film Stills</p><br>
+				
+				<img height="75%" src="imgs/blu66.png" alt="iphone" id="iphone-two" />
+			</div>
+		<div class="slide" id="slide7"><p>Film Stills</p><br>
+				<h1></h1>
+				<img height="75%" src="imgs/blu77.png" alt="iphone" id="iphone-two" />
+			</div>
+	</div>
+	<div class="section" id="section3"><img height="90%" src="imgs/look6.png" alt="iphone" id="iphone-two" /></div>
+	<div class="section" id="section3"><img height="90%" src="imgs/look4.png" alt="iphone" id="iphone-two" /></div>
+	<div class="section" id="section3"><img height="90%" src="imgs/look2.png" alt="iphone" id="iphone-two" /></div>
+	<div class="section" id="section3"><img height="90%" src="imgs/look3.png" alt="iphone" id="iphone-two" /></div>
+	<div class="section" id="section3"><img height="90%" src="imgs/look5.png" alt="iphone" id="iphone-two" /></div>
+	<div class="section" id="section3"><img height="90%" src="imgs/look1.png" alt="iphone" id="iphone-two" /></div>
+
+	<div class="section" id="section23">
+	    <div class="slide" id="slide1"><p id="sect">
+The aesthetic of the collection offers a modern interpretation of <br>
+mas- culinity and femininity through a conscious cross-pollination <br>
+between menswear and womenswear elements. Inspired by children, <br>
+where no boundaries are set. It is a game of paradoxes. From a <br>
+female to male, from a child to an adult, from settle to extravagant, <br>
+ from fantasy to reality, from can’t to can.<br>
+</p>
+            <img width="500px"src="imgs/mood.jpg" alt="iphone" id="iphone-two" />
+        
+         <br>
+        <br>
+        <br>
+        <img width="50px" src="imgs/down.png" alt="iphone" id="down" />
+        </div>
+	    <div class="slide" id="slide4"><p > Look Book </p><br>
+			
+			<img height="75%" src="imgs/5.png" alt="look1" id="iphone-two" />
+            
+		</div>
+		<div class="slide" id="slide3"><p > Look Book </p><br>
+            
+				
+				<img height="75%" src="imgs/19.png" alt="iphone" id="iphone-two" />
+			</div>
+			 <div class="slide" id="slide4"><p > Look Book </p><br>
+			
+			<img height="75%" src="imgs/40.png" alt="iphone" id="iphone-two" />
+		</div>
+		<div class="slide" id="slide5"><p > Look Book </p><br>
+				
+				<img height="75%" src="imgs/42.png" alt="iphone" id="iphone-two" />
+			</div>
+		<div class="slide" id="slide5"><p > Look Book </p><br>
+			
+				<img height="75%" src="imgs/46.png" alt="iphone" id="iphone-two" />
+			</div>
+		<div class="slide" id="slide6"><p > Look Book </p><br>
+				
+				<img height="75%" src="imgs/37.png" alt="iphone" id="iphone-two" />
+			</div>
+		<div class="slide" id="slide6"><p > Look Book </p><br>
+				
+				<img height="75%" src="imgs/36.png" alt="iphone" id="iphone-two" />
+			</div>
+		<div class="slide" id="slide7"><p > Look Book </p><br>
+				<h1></h1>
+				<img height="75%"src="imgs/35.png" alt="iphone" id="iphone-two" />
+			</div>
+			<div class="slide" id="slide7"><p > Look Book </p><br>
+				<h1></h1>
+				<img height="75%" src="imgs/34.png" alt="iphone" id="iphone-two" />
+			</div>
+			<div class="slide" id="slide7"><p > Look Book </p><br><img height="75%" src="imgs/18.png" alt="iphone" id="iphone-two" />
+			</div>
+            
+            <div class="slide" id="slide7"><p > Look Book </p><br><img height="75%" src="imgs/5.png" alt="iphone" id="iphone-two" />
+			</div>
+            <div class="slide" id="slide7"><p > Look Book </p><br><img height="75%" src="imgs/6.png" alt="iphone" id="iphone-two" />
+			</div>
+            <div class="slide" id="slide7"><p > Look Book </p><br><img height="75%" src="imgs/7.png" alt="iphone" id="iphone-two" />
+			</div>
+            <div class="slide" id="slide7"><p > Look Book </p><br><img height="75%" src="imgs/8.png" alt="iphone" id="iphone-two" />
+			</div>
+            <div class="slide" id="slide7"><p > Look Book </p><br><img height="75%" src="imgs/9.png" alt="iphone" id="iphone-two" />
+			</div>
+        <div class="slide" id="slide7"><p > Look Book </p><br><img height="75%" src="imgs/12.png" alt="iphone" id="iphone-two" />
+			</div>
+        <div class="slide" id="slide7"><p > Look Book </p><br><img height="75%" src="imgs/13.png" alt="iphone" id="iphone-two" />
+			</div>
+        <div class="slide" id="slide7"><p > Look Book </p><br><img height="75%" src="imgs/15.png" alt="iphone" id="iphone-two" />
+			</div>
+        <div class="slide" id="slide7"><p > Look Book </p><br><img height="75%"  src="imgs/16.png" alt="iphone" id="iphone-two" />
+			</div>
+        
+        <div class="slide" id="slide7"><p > Look Book </p><br><img height="75%" src="imgs/20.png" alt="iphone" id="iphone-two" />
+			</div>
+        <div class="slide" id="slide7"><p > Look Book </p><br><img height="75%" src="imgs/44.png" alt="iphone" id="iphone-two" />
+			</div>
+        
+	</div>
+
+    <div class="section" id="section1"><div class="videoContainer"><h1> Full Film </h1>
+    <iframe height="50%" class="videoContainer__video" width="100%" height="1080" src="http://www.youtube.com/embed/EmIF9SNFXg8?modestbranding=1&autoplay=1&controls=0&fs=0&loop=1&rel=0&showinfo=0&disablekb=1&playlist=0" frameborder="0"></iframe>
+     <p>
+		
+		 <br>
+		 <br>
+		Director: Tomáš Bláha <br>
+		Cinematographer: Tomáš Uhlík <br>
+		Graffer: Filip Hájek <br>
+		Music: Calm Season - Symbol, Pt. 1 <br>
+		Models: Michaela Němečková, Štěpán Vrzal <br>
+		Photographer: Tomáš Teglý <br>
+	 </p>
+	 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+        <a href="#section0"> <img width="50px" src="imgs/down.png" alt="iphone" id="iphone-two" /> </a>
+</div></div>
+
+
+	
+</div>
+
+</body>
+</html>
